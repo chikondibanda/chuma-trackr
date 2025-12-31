@@ -40,3 +40,4 @@ document.querySelector('#transaction-form').addEventListener('submit', async e =
   });
   loadTransactions();
 });
+                    
