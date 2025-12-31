@@ -1,0 +1,11 @@
+body { font-family: 'Wix Madefor Text', system-ui; margin:0; padding:20px; background:#f5f7fa; }
+h1,h2,h3 { margin:0 0 10px 0; }
+.card { background:#fff; padding:20px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.05); margin-bottom:20px; }
+input, select { padding:10px; margin-right:10px; border-radius:8px; border:1px solid #ddd; }
+button { padding:10px 15px; border-radius:10px; border:none; background:#0c7cff; color:#fff; cursor:pointer; transition:0.2s; }
+button:hover { background:#0657b0; }
+.dashboard { display:flex; flex-wrap:wrap; gap:20px; }
+.dashboard .card { flex:1 1 250px; }
+table { width:100%; border-collapse:collapse; }
+th, td { text-align:left; padding:10px; border-bottom:1px solid #eee; }
+@media (max-width:768px){ .dashboard { flex-direction:column; } }
