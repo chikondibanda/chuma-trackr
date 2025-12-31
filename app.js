@@ -1,43 +1,63 @@
-// Initialize Clerk
-const clerk = Clerk({ frontendApi: "https://<your-clerk-frontend>.clerk.dev" });
+window.Clerk.load({
+  publishableKey: "YOUR_CLERK_PUBLISHABLE_KEY"
+}).then(async () => {
+  const { user, session } = Clerk;
 
-let token;
-clerk.load().then(() => {
-  if (clerk.session) token = clerk.session.getToken();
-  else clerk.openSignIn();
+  Clerk.mountSignIn(document.getElementById("sign-in"));
+  Clerk.mountUserButton(document.getElementById("user-button"));
+
+  Clerk.addListener(async ({ user }) => {
+    if (!user) return;
+
+    document.getElementById("dashboard").style.display = "block";
+    document.getElementById("username").innerText = user.firstName || "User";
+
+    loadDashboard();
+    loadTransactions();
+  });
 });
 
-// Load transactions
-async function loadTransactions() {
-  const res = await fetch('/api/transactions', {
+async function getToken() {
+  const session = await Clerk.session.getToken();
+  return session;
+}
+
+async function loadDashboard() {
+  const token = await getToken();
+  const res = await fetch("/api/get-dashboard", {
     headers: { Authorization: `Bearer ${token}` }
   });
   const data = await res.json();
-  const tbody = document.querySelector('#transactions-table tbody');
-  tbody.innerHTML = '';
-  data.forEach(t => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `<td>${t.transaction_date}</td><td>${t.type}</td><td>${t.category_name}</td><td>${t.amount}</td><td>${t.note}</td>`;
-    tbody.appendChild(tr);
-  });
+  document.getElementById("balance").innerText = data.balance;
 }
-loadTransactions();
 
-// Add transaction
-document.querySelector('#transaction-form').addEventListener('submit', async e => {
-  e.preventDefault();
-  const payload = {
-    amount: parseFloat(document.querySelector('#amount').value),
-    type: document.querySelector('#type').value,
-    category_id: document.querySelector('#category').value,
-    note: document.querySelector('#note').value,
-    transaction_date: new Date().toISOString().split('T')[0]
-  };
-  await fetch('/api/transactions', {
-    method:'POST',
-    headers:{ 'Content-Type':'application/json', Authorization:`Bearer ${token}` },
-    body: JSON.stringify(payload)
+async function loadTransactions() {
+  const token = await getToken();
+  const res = await fetch("/api/get-transactions", {
+    headers: { Authorization: `Bearer ${token}` }
   });
+  const data = await res.json();
+
+  document.getElementById("transactions").innerHTML =
+    data.map(t => `<p>${t.category} - ${t.amount}</p>`).join("");
+}
+
+async function addTransaction() {
+  const token = await getToken();
+
+  await fetch("/api/add-transaction", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      amount: document.getElementById("amount").value,
+      type: document.getElementById("type").value,
+      category: document.getElementById("category").value
+    })
+  });
+
+  loadDashboard();
   loadTransactions();
-});
-                    
+}

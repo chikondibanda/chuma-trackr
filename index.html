@@ -1,53 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chuma Trackr - All in One Personal Finance Manager</title>
-    <!-- Wix Madefor Text -->
-    <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Clerk JS SDK -->
-    <script src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest"></script>
+  <title>Personal Finance Manager</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;600;700&display=swap" rel="stylesheet">
+  <script
+    async
+    crossorigin="anonymous"
+    src="https://cdn.jsdelivr.net/npm/@clerk/clerk-browser@latest/dist/clerk.browser.js">
+  </script>
 </head>
+
 <body>
-<header>
-  <h1>💰 Personal Finance Manager</h1>
-</header>
+  <div id="app">
+    <div id="auth">
+      <div id="sign-in"></div>
+      <div id="user-button"></div>
+    </div>
 
-<section class="dashboard">
-  <div class="card"><h3>Total Income</h3><p id="total-income">0</p></div>
-  <div class="card"><h3>Total Expense</h3><p id="total-expense">0</p></div>
-  <div class="card"><h3>Balance</h3><p id="balance">0</p></div>
-</section>
+    <div id="dashboard" style="display:none;">
+      <h1>Hello, <span id="username"></span></h1>
 
-<section class="card">
-  <h3>Add Transaction</h3>
-  <form id="transaction-form">
-    <input type="number" placeholder="Amount" id="amount">
-    <select id="type">
-      <option value="income">Income</option>
-      <option value="expense">Expense</option>
-    </select>
-    <input type="text" placeholder="Category" id="category">
-    <input type="text" placeholder="Note" id="note">
-    <button type="submit">Add</button>
-  </form>
-</section>
+      <section>
+        <h2>Balance</h2>
+        <p id="balance"></p>
+      </section>
 
-<section class="card">
-  <h3>Transactions</h3>
-  <table id="transactions-table">
-    <thead>
-      <tr>
-        <th>Date</th><th>Type</th><th>Category</th><th>Amount</th><th>Note</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-</section>
+      <section>
+        <h2>Add Transaction</h2>
+        <input id="amount" placeholder="Amount">
+        <select id="type">
+          <option value="income">Income</option>
+          <option value="expense">Expense</option>
+        </select>
+        <input id="category" placeholder="Category">
+        <button onclick="addTransaction()">Save</button>
+      </section>
 
-<script src="app.js"></script>
+      <section>
+        <h2>Transactions</h2>
+        <div id="transactions"></div>
+      </section>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
