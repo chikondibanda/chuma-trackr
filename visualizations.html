@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Spending Visualizations - Chuma Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="tailwind-config.js"></script>
+    <link href="style.css" rel="stylesheet" />
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-text-main dark:text-gray-100 antialiased overflow-x-hidden">
+    <div class="flex min-h-screen w-full flex-row">
+        <aside
+            class="hidden md:flex flex-col w-72 bg-surface-light dark:bg-surface-dark border-r border-slate-200 dark:border-slate-800 h-full">
+            <div class="p-6 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white">
+                    <span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+                </div>
+                <h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Chuma Tracker</h1>
+            </div>
+            <div class="flex-1 px-4 py-4 flex flex-col gap-2 overflow-y-auto">
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-slate-900 dark:hover:text-white transition-colors group"
+                    href="dashboard.html">
+                    <span
+                        class="material-symbols-outlined group-hover:text-slate-900 dark:group-hover:text-white transition-colors">dashboard</span>
+                    <span class="font-medium text-sm">Dashboard</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-slate-900 dark:text-white group"
+                    href="visualizations.html">
+                    <span class="material-symbols-outlined text-primary">receipt_long</span>
+                    <span class="font-bold text-sm">Transactions</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-slate-900 dark:hover:text-white transition-colors group"
+                    href="budgets.html">
+                    <span
+                        class="material-symbols-outlined group-hover:text-slate-900 dark:group-hover:text-white transition-colors">pie_chart</span>
+                    <span class="font-medium text-sm">Budget</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-slate-900 dark:hover:text-white transition-colors group"
+                    href="#">
+                    <span
+                        class="material-symbols-outlined group-hover:text-slate-900 dark:group-hover:text-white transition-colors">flag</span>
+                    <span class="font-medium text-sm">Goals</span>
+                </a>
+                <div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800">
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-slate-900 dark:hover:text-white transition-colors group"
+                        href="settings.html">
+                        <span
+                            class="material-symbols-outlined group-hover:text-slate-900 dark:group-hover:text-white transition-colors">settings</span>
+                        <span class="font-medium text-sm">Settings</span>
+                    </a>
+                </div>
+            </div>
+            <div class="p-4">
+                <button data-micromodal-trigger="modal-add-transaction"
+                    class="flex w-full items-center justify-center gap-2 rounded-lg h-10 px-4 bg-primary hover:bg-primary/90 transition-colors text-slate-900 text-sm font-bold shadow-sm shadow-primary/20">
+                    <span class="material-symbols-outlined text-[18px]">add</span>
+                    <span>New Transaction</span>
+                </button>
+            </div>
+        </aside>
+        <main class="flex-1 flex flex-col relative overflow-y-auto h-screen">
+            <div
+                class="lg:hidden flex items-center justify-between p-4 bg-card-light dark:bg-card-dark border-b border-border-light dark:border-border-dark sticky top-0 z-20">
+                <div class="flex items-center gap-2">
+                    <div class="bg-center bg-no-repeat bg-cover rounded-full size-8 border border-primary/20"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDgAgE7mhctWRfOZGIF_E6eEhOSzz51tHzFTxlh66Bi7WBL0Z7X0yulabWjbL6giD9ZtRU0vinpDWMTzhWFqAPMKVm0WarETG63CmTseP08YH8Adl2TN8BrnnY5UhD5LDb18i809OZRSy7LP1dvLhh_ri2ZBDs-V5YKx3ZRxg1vhA2KMUjio2sCuwdV7unNUfUlaxw7PJbIGq6MIwcB4QB8oMTXBSbki7Bv4URk8RzDC4cL6mY5guJMI2Ty10fKM7y7mVMwknkXcB-x");'>
+                    </div>
+                    <h1 class="text-lg font-bold dark:text-white">Chuma</h1>
+                </div>
+                <button class="p-2 text-text-main dark:text-white">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+            <div class="flex-1 max-w-7xl mx-auto w-full p-4 md:p-8 lg:p-10 space-y-8">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+                    <div class="flex flex-col gap-1">
+                        <h1 class="text-text-main dark:text-white text-3xl md:text-4xl font-extrabold tracking-tight">
+                            Spending Visualizations</h1>
+                        <p class="text-text-secondary dark:text-gray-400 text-base">Overview for October 2023</p>
+                    </div>
+                    <div class="flex items-center gap-3 w-full md:w-auto">
+                        <button
+                            class="flex-1 md:flex-none items-center justify-center gap-2 bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark hover:border-primary/50 text-text-main dark:text-white px-4 h-10 rounded-lg text-sm font-semibold transition-all shadow-sm">
+                            <span class="material-symbols-outlined text-lg">calendar_month</span>
+                            <span>This Month</span>
+                        </button>
+                        <button data-micromodal-trigger="modal-download-report"
+                            class="flex-1 md:flex-none items-center justify-center gap-2 bg-primary text-black hover:bg-primary/90 px-4 h-10 rounded-lg text-sm font-bold transition-all shadow-sm shadow-primary/20">
+                            <span class="material-symbols-outlined text-lg">download</span>
+                            <span>Report</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Mini Charts Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div
+                        class="bg-card-light dark:bg-card-dark rounded-xl p-6 border border-border-light dark:border-border-dark shadow-sm">
+                        <p class="text-text-secondary dark:text-gray-400 text-sm font-medium mb-1">Total Spent</p>
+                        <p class="text-text-main dark:text-white text-3xl font-black tracking-tight">$2,450.00</p>
+                    </div>
+                    <div
+                        class="bg-card-light dark:bg-card-dark rounded-xl p-6 border border-border-light dark:border-border-dark shadow-sm">
+                        <p class="text-text-secondary dark:text-gray-400 text-sm font-medium mb-1">Top Category</p>
+                        <p class="text-text-main dark:text-white text-3xl font-black tracking-tight">Groceries</p>
+                    </div>
+                    <div
+                        class="bg-card-light dark:bg-card-dark rounded-xl p-6 border border-border-light dark:border-border-dark shadow-sm">
+                        <p class="text-text-secondary dark:text-gray-400 text-sm font-medium mb-1">Avg Daily Spend</p>
+                        <p class="text-text-main dark:text-white text-3xl font-black tracking-tight">$79.03</p>
+                    </div>
+                </div>
+                <!-- Main Visuals -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div
+                        class="lg:col-span-2 bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark shadow-sm h-[400px] flex items-center justify-center">
+                        <p class="text-gray-400">Cash Flow Visualization</p>
+                    </div>
+                    <div
+                        class="bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark shadow-sm h-[400px] flex items-center justify-center">
+                        <p class="text-gray-400">Category Breakdown</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- MicroModal Structure -->
+    <div class="modal micromodal-slide" id="modal-download-report" aria-hidden="true">
+        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+            <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-report-title">
+                <div
+                    class="bg-card-light dark:bg-card-dark rounded-2xl p-6 md:p-8 shadow-2xl border border-border-light dark:border-border-dark pointer-events-auto text-center">
+                    <div
+                        class="size-16 bg-primary/20 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="material-symbols-outlined text-4xl">description</span>
+                    </div>
+                    <h2 class="text-2xl font-black text-text-main dark:text-white mb-2" id="modal-report-title">Generate
+                        Report</h2>
+                    <p class="text-text-secondary dark:text-gray-400 mb-8">Choose a format for your financial summary.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <button
+                            class="p-4 rounded-xl border border-border-light dark:border-border-dark hover:border-primary transition-all flex flex-col items-center gap-2 group">
+                            <span class="material-symbols-outlined text-3xl text-red-500">picture_as_pdf</span>
+                            <span class="font-bold">PDF Document</span>
+                        </button>
+                        <button
+                            class="p-4 rounded-xl border border-border-light dark:border-border-dark hover:border-primary transition-all flex flex-col items-center gap-2 group">
+                            <span class="material-symbols-outlined text-3xl text-green-600">table_view</span>
+                            <span class="font-bold">Excel Sheet</span>
+                        </button>
+                    </div>
+
+                    <div class="flex items-center gap-4">
+                        <button
+                            class="flex-1 h-12 bg-primary hover:bg-primary/90 text-black font-bold rounded-lg transition-colors"
+                            data-micromodal-close>
+                            Download Now
+                        </button>
+                        <button
+                            class="flex-1 h-12 bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 text-text-secondary font-bold rounded-lg transition-colors"
+                            data-micromodal-close>
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            try {
+                MicroModal.init({
+                    openTrigger: 'data-micromodal-trigger',
+                    closeTrigger: 'data-micromodal-close',
+                    disableScroll: true,
+                    awaitOpenAnimation: true,
+                    awaitCloseAnimation: true
+                });
+            } catch (e) {
+                console.error("MicroModal initialization failed:", e);
+            }
+        });
+    </script>
+</body>
+
+</html>

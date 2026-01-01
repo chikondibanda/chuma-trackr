@@ -1,49 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html class="light" lang="en">
+
 <head>
-  <title>Finance Manager</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;600;700&display=swap" rel="stylesheet">
-  <script
-    async
-    crossorigin="anonymous"
-    src="https://cdn.jsdelivr.net/npm/@clerk/clerk-browser@latest/dist/clerk.browser.js">
-  </script>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Chuma Tracker - Welcome</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script src="tailwind-config.js"></script>
+  <link href="style.css" rel="stylesheet" />
 </head>
 
-<body>
-  <div id="app">
-    <div id="auth">
-      <div id="sign-in"></div>
-      <div id="user-button"></div>
+<body
+  class="bg-background-light dark:bg-background-dark font-display text-text-light flex items-center justify-center min-h-screen p-6">
+  <div class="max-w-4xl w-full flex flex-col items-center gap-12 text-center">
+    <div class="flex flex-col items-center gap-4">
+      <div class="size-16 bg-primary/20 text-primary rounded-2xl flex items-center justify-center">
+        <span class="material-symbols-outlined text-5xl">account_balance_wallet</span>
+      </div>
+      <h1 class="text-5xl font-black tracking-tight dark:text-white">Chuma Tracker</h1>
+      <p class="text-xl text-gray-500 max-w-lg">Beautiful, intuitive, and high-fidelity UI designs for your personal
+        finance journey.</p>
     </div>
 
-    <div id="dashboard" style="display:none;">
-      <h1>Hello, <span id="username"></span></h1>
-
-      <section>
-        <h2>Balance</h2>
-        <p id="balance"></p>
-      </section>
-
-      <section>
-        <h2>Add Transaction</h2>
-        <input id="amount" placeholder="Amount">
-        <select id="type">
-          <option value="income">Income</option>
-          <option value="expense">Expense</option>
-        </select>
-        <input id="category" placeholder="Category">
-        <button onclick="addTransaction()">Save</button>
-      </section>
-
-      <section>
-        <h2>Transactions</h2>
-        <div id="transactions"></div>
-      </section>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+      <a href="login.html"
+        class="p-6 bg-white dark:bg-surface-dark border border-gray-200 dark:border-border-dark rounded-2xl hover:border-primary transition-all group flex flex-col items-center gap-4">
+        <span class="material-symbols-outlined text-4xl text-primary">login</span>
+        <span class="text-lg font-bold dark:text-white">Login / Signup</span>
+      </a>
+      <a href="app.html"
+        class="p-6 bg-white dark:bg-surface-dark border border-gray-200 dark:border-border-dark rounded-2xl hover:border-primary transition-all group flex flex-col items-center gap-4">
+        <span class="material-symbols-outlined text-4xl text-primary">dashboard</span>
+        <span class="text-lg font-bold dark:text-white">Dashboard SPA</span>
+      </a>
+      <a href="add-transaction.html"
+        class="p-6 bg-white dark:bg-surface-dark border border-gray-200 dark:border-border-dark rounded-2xl hover:border-primary transition-all group flex flex-col items-center gap-4">
+        <span class="material-symbols-outlined text-4xl text-primary">add_circle</span>
+        <span class="text-lg font-bold dark:text-white">Add Transaction</span>
+      </a>
+      <a href="budgets.html"
+        class="p-6 bg-white dark:bg-surface-dark border border-gray-200 dark:border-border-dark rounded-2xl hover:border-primary transition-all group flex flex-col items-center gap-4">
+        <span class="material-symbols-outlined text-4xl text-primary">account_balance_wallet</span>
+        <span class="text-lg font-bold dark:text-white">Budgets</span>
+      </a>
+      <a href="visualizations.html"
+        class="p-6 bg-white dark:bg-surface-dark border border-gray-200 dark:border-border-dark rounded-2xl hover:border-primary transition-all group flex flex-col items-center gap-4">
+        <span class="material-symbols-outlined text-4xl text-primary">pie_chart</span>
+        <span class="text-lg font-bold dark:text-white">Visualizations</span>
+      </a>
     </div>
   </div>
-
-  <script src="app.js"></script>
 </body>
+
 </html>

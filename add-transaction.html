@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Chuma Tracker - Add Transaction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#19e65e",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#112116",
+                        "text-main-light": "#0e1b12",
+                        "text-main-dark": "#f0fdf4",
+                        "border-light": "#d0e7d7",
+                        "border-dark": "#2a4030",
+                    },
+                    fontFamily: {
+                        "display": ["Wix Madefor Text", "sans-serif"],
+                        "body": ["Wix Madefor Text", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display antialiased text-text-main-light dark:text-text-main-dark transition-colors duration-200 min-h-screen flex flex-col">
+    <header
+        class="sticky top-0 z-50 w-full border-b border-border-light dark:border-border-dark bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm">
+        <div class="px-4 md:px-10 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="size-8 text-primary flex items-center justify-center">
+                    <span class="material-symbols-outlined text-3xl">account_balance_wallet</span>
+                </div>
+                <h2 class="text-text-main-light dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">
+                    Chuma Tracker</h2>
+            </div>
+            <div class="hidden md:flex flex-1 justify-end gap-8 items-center">
+                <nav class="flex items-center gap-6">
+                    <a class="text-text-main-light dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium"
+                        href="dashboard.html">Dashboard</a>
+                    <a class="text-text-main-light dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium"
+                        href="visualizations.html">Transactions</a>
+                    <a class="text-text-main-light dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium"
+                        href="budgets.html">Budget</a>
+                    <a class="text-text-main-light dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium"
+                        href="#">Reports</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <button
+                        class="flex items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-[#0e1b12] text-sm font-bold hover:bg-green-400 transition-colors">
+                        <span class="truncate">Log Out</span>
+                    </button>
+                    <div class="bg-center bg-no-repeat bg-cover rounded-full size-10 border-2 border-primary/20 cursor-pointer"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAQT5Pi1X9e67D8c0ldDReWMmKmPcGW8oQB2Un0dllAiZD4AY9poOuPD-p32QGwDv5pm_W-xmveirqYTZP-8reJc91Y0an3mCub-LGnZjFZbpIG6sr0Nlx-TFDQRcP-yNmSJh1jeTRqIKfA_kaLJG7kZHoSumRPIy-fhrcJyDK63zFy0rc7fakX7FSfR3dIRHJFEuKl7EGOs0bM9SSWa-zzC-vqHws0r_F36vbwPZdUumSs8DUuSBHAKGF_zJ7ygFoaimIxDigbUEVY");'>
+                    </div>
+                </div>
+            </div>
+            <button class="md:hidden text-text-main-light dark:text-white">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </header>
+    <main class="flex-grow w-full max-w-7xl mx-auto p-4 md:p-8 lg:p-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div class="lg:col-span-8 flex flex-col gap-6">
+                <div class="flex flex-col gap-2">
+                    <h1 class="text-text-main-light dark:text-white text-3xl md:text-4xl font-black tracking-tight">Add
+                        New Transaction</h1>
+                    <p class="text-[#4e9767] dark:text-[#6ec58c] text-base font-normal">Record your income or expenses
+                        to keep track of your finances.</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-[#1a2e22] rounded-2xl p-6 md:p-8 shadow-sm border border-border-light dark:border-border-dark">
+                    <div class="mb-8">
+                        <div
+                            class="flex h-12 w-full max-w-sm items-center justify-center rounded-lg bg-[#e7f3eb] dark:bg-[#2a4030] p-1">
+                            <label
+                                class="flex-1 cursor-pointer h-full flex items-center justify-center rounded-md transition-all has-[:checked]:bg-white dark:has-[:checked]:bg-[#112116] has-[:checked]:shadow-sm has-[:checked]:text-primary">
+                                <span class="text-sm font-bold">Income</span>
+                                <input class="hidden" name="type" type="radio" value="Income" />
+                            </label>
+                            <label
+                                class="flex-1 cursor-pointer h-full flex items-center justify-center rounded-md transition-all has-[:checked]:bg-white dark:has-[:checked]:bg-[#112116] has-[:checked]:shadow-sm has-[:checked]:text-red-500 text-[#4e9767] dark:text-[#8abca0]">
+                                <span class="text-sm font-bold">Expense</span>
+                                <input checked="" class="hidden" name="type" type="radio" value="Expense" />
+                            </label>
+                        </div>
+                    </div>
+                    <form class="flex flex-col gap-6">
+                        <div class="flex flex-col">
+                            <label class="text-text-main-light dark:text-gray-300 text-sm font-bold mb-2">Amount</label>
+                            <div class="relative">
+                                <span
+                                    class="absolute left-4 top-1/2 -translate-y-1/2 text-2xl font-bold text-[#4e9767] dark:text-[#6ec58c]">$</span>
+                                <input
+                                    class="w-full h-16 pl-10 pr-4 rounded-xl border border-border-light dark:border-border-dark bg-[#f8fcf9] dark:bg-[#112116] text-3xl font-bold text-text-main-light dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-shadow placeholder:text-gray-300 dark:placeholder:text-gray-600"
+                                    placeholder="0.00" step="0.01" type="number" />
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <label class="flex flex-col">
+                                <span class="text-text-main-light dark:text-gray-300 text-sm font-bold mb-2">Date</span>
+                                <div class="relative">
+                                    <input
+                                        class="w-full h-12 px-4 rounded-lg border border-border-light dark:border-border-dark bg-[#f8fcf9] dark:bg-[#112116] text-base text-text-main-light dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                                        type="date" />
+                                    <span
+                                        class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-[#4e9767] pointer-events-none">calendar_today</span>
+                                </div>
+                            </label>
+                            <label class="flex flex-col">
+                                <span
+                                    class="text-text-main-light dark:text-gray-300 text-sm font-bold mb-2">Category</span>
+                                <div class="relative">
+                                    <select
+                                        class="w-full h-12 px-4 appearance-none rounded-lg border border-border-light dark:border-border-dark bg-[#f8fcf9] dark:bg-[#112116] text-base text-text-main-light dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
+                                        <option disabled="" selected="" value="">Select Category</option>
+                                        <option value="groceries">Groceries</option>
+                                        <option value="rent">Rent &amp; Housing</option>
+                                        <option value="salary">Salary</option>
+                                        <option value="entertainment">Entertainment</option>
+                                        <option value="transport">Transport</option>
+                                    </select>
+                                    <span
+                                        class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-[#4e9767] pointer-events-none">expand_more</span>
+                                </div>
+                            </label>
+                        </div>
+                        <label class="flex flex-col">
+                            <span class="text-text-main-light dark:text-gray-300 text-sm font-bold mb-2">Description
+                                <span class="font-normal text-gray-400 ml-1">(Optional)</span></span>
+                            <textarea
+                                class="w-full p-4 rounded-lg border border-border-light dark:border-border-dark bg-[#f8fcf9] dark:bg-[#112116] text-base text-text-main-light dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none resize-none placeholder:text-gray-400"
+                                placeholder="e.g. Weekly grocery run at Whole Foods" rows="3"></textarea>
+                        </label>
+                        <div class="flex items-center gap-4 pt-4">
+                            <button
+                                class="flex-1 md:flex-none md:min-w-[160px] h-12 bg-primary hover:bg-green-400 text-[#0e1b12] font-bold rounded-lg transition-colors flex items-center justify-center gap-2"
+                                type="button">
+                                <span class="material-symbols-outlined">check</span>
+                                Save Transaction
+                            </button>
+                            <button
+                                class="px-6 h-12 bg-transparent hover:bg-gray-100 dark:hover:bg-white/5 text-[#4e9767] dark:text-[#6ec58c] font-bold rounded-lg transition-colors"
+                                type="button" onclick="window.history.back()">
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="lg:col-span-4 flex flex-col gap-6">
+                <div
+                    class="bg-white dark:bg-[#1a2e22] rounded-2xl p-6 border border-border-light dark:border-border-dark shadow-sm">
+                    <h3 class="text-text-main-light dark:text-white font-bold text-lg mb-4">This Month</h3>
+                    <div class="flex gap-4">
+                        <div
+                            class="flex-1 bg-[#f8fcf9] dark:bg-[#112116] rounded-xl p-4 border border-border-light dark:border-border-dark">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="size-6 rounded-full bg-primary/20 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-primary text-sm">arrow_downward</span>
+                                </div>
+                                <span
+                                    class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Income</span>
+                            </div>
+                            <p class="text-xl font-black text-text-main-light dark:text-white">$4,250</p>
+                        </div>
+                        <div
+                            class="flex-1 bg-[#f8fcf9] dark:bg-[#112116] rounded-xl p-4 border border-border-light dark:border-border-dark">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="size-6 rounded-full bg-red-500/20 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-red-500 text-sm">arrow_upward</span>
+                                </div>
+                                <span
+                                    class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Expense</span>
+                            </div>
+                            <p class="text-xl font-black text-text-main-light dark:text-white">$1,120</p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-white dark:bg-[#1a2e22] rounded-2xl p-6 border border-border-light dark:border-border-dark shadow-sm flex flex-col flex-grow">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-text-main-light dark:text-white font-bold text-lg">Recent Activity</h3>
+                        <a class="text-sm font-medium text-primary hover:underline" href="visualizations.html">View
+                            All</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <div
+                            class="flex items-center gap-4 p-3 rounded-lg hover:bg-background-light dark:hover:bg-white/5 transition-colors cursor-pointer group">
+                            <div
+                                class="size-10 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-lg">shopping_cart</span>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="text-sm font-bold text-text-main-light dark:text-white truncate">Grocery Store
+                                </p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">Today, 10:23 AM</p>
+                            </div>
+                            <p
+                                class="text-sm font-bold text-text-main-light dark:text-white group-hover:text-red-500 transition-colors">
+                                -$124.50</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="mt-auto py-6 border-t border-border-light dark:border-border-dark text-center">
+        <p class="text-sm text-gray-500 dark:text-gray-400">© 2023 Chuma Tracker. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

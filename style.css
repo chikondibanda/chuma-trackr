@@ -1,11 +1,97 @@
-body { font-family: 'Wix Madefor Text', system-ui; margin:0; padding:20px; background:#f5f7fa; }
-h1,h2,h3 { margin:0 0 10px 0; }
-.card { background:#fff; padding:20px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.05); margin-bottom:20px; }
-input, select { padding:10px; margin-right:10px; border-radius:8px; border:1px solid #ddd; }
-button { padding:10px 15px; border-radius:10px; border:none; background:#0c7cff; color:#fff; cursor:pointer; transition:0.2s; }
-button:hover { background:#0657b0; }
-.dashboard { display:flex; flex-wrap:wrap; gap:20px; }
-.dashboard .card { flex:1 1 250px; }
-table { width:100%; border-collapse:collapse; }
-th, td { text-align:left; padding:10px; border-bottom:1px solid #eee; }
-@media (max-width:768px){ .dashboard { flex-direction:column; } }
+/* Google Fonts & Material Symbols already handled via CDN in HTML */
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: #334155;
+}
+
+/* Material Symbols - Filled variant helper */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.material-symbols-outlined.fill {
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* MicroModal Styles */
+.modal {
+    display: none;
+}
+
+.modal.is-open {
+    display: block;
+}
+
+.modal__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal__container {
+    background-color: transparent;
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    border-radius: 1rem;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+@keyframes mm_fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes mm_fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes mm_slideIn {
+    from { transform: translateY(15%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes mm_slideOut {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-10%); opacity: 0; }
+}
+
+.micromodal-slide[aria-hidden="false"] .modal__overlay {
+    animation: mm_fadeIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.micromodal-slide[aria-hidden="false"] .modal__container {
+    animation: mm_slideIn .3s cubic-bezier(0, 0, .2, 1);
+}
+
+.micromodal-slide[aria-hidden="true"] .modal__overlay {
+    animation: mm_fadeOut .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.micromodal-slide[aria-hidden="true"] .modal__container {
+    animation: mm_slideOut .3s cubic-bezier(0, 0, .2, 1);
+}
